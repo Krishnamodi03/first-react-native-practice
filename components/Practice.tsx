@@ -7,13 +7,23 @@ import {
   ScrollView,
   Button,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
+import { ThemedText } from "./ThemedText";
+import { Link, Redirect, useRouter } from "expo-router";
 
 const Practice = () => {
   const [pressCount, setPressCount] = useState(0);
   const handleCustomTectPress = () => {
     setPressCount((prev) => prev + 1);
   };
+  const router = useRouter();
+
+  const data = [
+    { id: "1", name: "Apple" },
+    { id: "2", name: "Banana" },
+    { id: "3", name: "Cherry" },
+  ];
   return (
     <>
       <View style={styles.customView}>
@@ -29,13 +39,11 @@ const Practice = () => {
           this is using tailwind css (nativeWind)
         </Text>
       </View>
-
-      <View className="flex-1 items-center justify-center bg-white">
+      <View className="flex-1 items-center justify-center bg-white min-h-fit">
         <Text className="text-xl font-bold text-blue-500">
           Welcome to Nativewind!
         </Text>
       </View>
-
       <View>
         <Text className="text-gray-400">Local Image : </Text>
         <Image
@@ -49,26 +57,38 @@ const Practice = () => {
           style={{ width: 100, height: 100 }}
         />
       </View>
-
+      <ThemedText>ScrollView example: </ThemedText>
       <ScrollView>
-        <Text>Item 1</Text>
-        <Text>Item 2</Text>
+        <ThemedText>Item 1</ThemedText>
+        <ThemedText>Item 2</ThemedText>
         {/* Add more items */}
       </ScrollView>
-
       <Button
         title="Learn More"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
       />
       <Button
-        title="Press me"
-        onPress={() => alert("Why pressed me without permission?")}
+        onPress={() => router.navigate("/explore")}
+        title="Press me to go to Explore page"
       />
-
       <TouchableOpacity onPress={() => alert("Pressed!")}>
-        <Text>Press Me</Text>
+        <Text className="bg-white w-full text-center">Press Me</Text>
       </TouchableOpacity>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View>
+            <ThemedText>&hearts;{item?.name}</ThemedText>
+          </View>
+        )}
+      />
+      <Link href="/explore">
+        <Text className="text-blue-500 font-bold hover:text-red-500">
+          About
+        </Text>
+      </Link>
     </>
   );
 };
