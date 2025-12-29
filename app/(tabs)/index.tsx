@@ -4,8 +4,8 @@ import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { useState } from "react";
 import Practice from "@/components/Practice";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function HomeScreen() {
   return (
@@ -18,9 +18,12 @@ export default function HomeScreen() {
         />
       }
     >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Hello world!</ThemedText>
-        <HelloWave />
+      <ThemedView className="flex-row items-center justify-between">
+        <ThemedView className="flex-row items-center gap-2">
+          <ThemedText type="title">Hello world!</ThemedText>
+          <HelloWave />
+        </ThemedView>
+        <ThemeToggle />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
@@ -62,11 +65,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
   stepContainer: {
     gap: 8,
     marginBottom: 8,

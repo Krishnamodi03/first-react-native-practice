@@ -15,12 +15,23 @@ const MAPPING = {
   "chevron.right": "chevron-right",
   "profile-circle": "person",
   "person.fill": "person",
-} as Partial<
-  Record<
-    import("expo-symbols").SymbolViewProps["name"],
-    React.ComponentProps<typeof MaterialIcons>["name"]
-  >
->;
+  "location.fill": "location-on",
+  "lock.fill": "lock",
+  "shield.fill": "security",
+  "faceid": "face",
+  "chevron.left": "chevron-left",
+  "chevron.down": "expand-more",
+  "chevron.up": "expand-less",
+  "envelope.fill": "email",
+  "phone.fill": "phone",
+  "bell.fill": "notifications",
+  "moon.fill": "dark-mode",
+  "camera.fill": "camera-alt",
+  "questionmark.circle.fill": "help",
+  "doc.text.fill": "description",
+  "hand.raised.fill": "pan-tool",
+  "rectangle.portrait.and.arrow.right": "logout",
+} as const;
 
 export type IconSymbolName = keyof typeof MAPPING;
 
@@ -45,8 +56,8 @@ export function IconSymbol({
     <MaterialIcons
       color={color}
       size={size}
-      name={MAPPING[name]}
-      style={style}
+      name={MAPPING[name] as any}
+      style={style as any}
     />
   );
 }

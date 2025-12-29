@@ -10,7 +10,7 @@ import {
   FlatList,
 } from "react-native";
 import { ThemedText } from "./ThemedText";
-import { Link, Redirect, useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 const Practice = () => {
   const [pressCount, setPressCount] = useState(0);
