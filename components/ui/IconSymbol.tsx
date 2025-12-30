@@ -31,6 +31,7 @@ const MAPPING = {
   "doc.text.fill": "description",
   "hand.raised.fill": "pan-tool",
   "rectangle.portrait.and.arrow.right": "logout",
+  "heart.fill": "favorite",
 } as const;
 
 export type IconSymbolName = keyof typeof MAPPING;
